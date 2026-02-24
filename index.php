@@ -22,35 +22,6 @@
 </style>
 </head>
 
-<script>
-window.addEventListener("scroll", function() {
-  const header = document.querySelector("header");
-  if (window.scrollY > 10) {
-    header.classList.add("shadow-lg");
-  } else {
-    header.classList.remove("shadow-lg");
-  }
-});
-</script>
-
-<script>
-const links = document.querySelectorAll(".nav-link");
-
-links.forEach(link => {
-  link.addEventListener("click", function() {
-
-    // Remove active styles from all
-    links.forEach(l => {
-      l.classList.remove("bg-[#0f172a]", "text-white", "px-6", "py-2", "rounded-full");
-    });
-
-    // Add active styles to clicked one
-    this.classList.add("bg-[#0f172a]", "text-white", "px-6", "py-2", "rounded-full");
-
-  });
-});
-</script>
-
 <body class="bg-gray-100 text-gray-900 overflow-x-hidden">
 
 <?php include 'frontend/header.php'; ?>
@@ -514,6 +485,50 @@ document.getElementById("btnPackage").addEventListener("click", () => {
 });
 
 renderChart("yearly");
+</script>
+
+<script>
+window.addEventListener("scroll", function() {
+  const header = document.querySelector("header");
+  if (window.scrollY > 10) {
+    header.classList.add("shadow-lg");
+  } else {
+    header.classList.remove("shadow-lg");
+  }
+});
+</script>
+
+<script>
+const links = document.querySelectorAll(".nav-link");
+
+links.forEach(link => {
+  link.addEventListener("click", function() {
+
+    // Remove active styles from all
+    links.forEach(l => {
+      l.classList.remove("bg-[#0f172a]", "text-white", "px-6", "py-2", "rounded-full");
+    });
+
+    // Add active styles to clicked one
+    this.classList.add("bg-[#0f172a]", "text-white", "px-6", "py-2", "rounded-full");
+
+  });
+});
+</script>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+    const menuBtn = document.getElementById("menuBtn");
+    const mobileMenu = document.getElementById("mobileMenu");
+
+    if (menuBtn && mobileMenu) {
+        menuBtn.addEventListener("click", function () {
+            mobileMenu.classList.toggle("hidden");
+        });
+    }
+
+});
 </script>
 
 </body>
