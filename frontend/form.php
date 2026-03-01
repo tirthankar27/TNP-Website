@@ -141,9 +141,5 @@
 
 <!-- FOOTER (premium, matching header) -->
 <?php include '../footer.php'; ?>
-<!-- subtle back-to-top (optional) -->
-<div class="fixed bottom-8 right-8 bg-blue-600 text-white p-3 rounded-full shadow-xl hover:bg-blue-700 transition cursor-pointer z-50 border-2 border-white/30">
-  <i class="fas fa-arrow-up"></i>
-</div>
 </body>
 </html>
