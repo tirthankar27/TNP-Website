@@ -4,7 +4,7 @@
     <div class="grid grid-cols-1 md:grid-cols-5 gap-16">
       <!-- LEFT COLUMN - FIXED ALIGNMENT -->
       <div class="md:col-span-2 flex flex-col items-start justify-start">
-        <img src="assets/logo.png" class="w-24 mb-6 ml-0">
+        <img src="/TNP/assets/logo.png" class="w-24 mb-6 ml-0">
         
         <p class="text-gray-300 text-base leading-snug mb-2 text-left w-full">
           राष्ट्रीय प्रौद्योगिकी संस्थान, सिक्किम
@@ -48,7 +48,7 @@
         </h3>
         <div class="space-y-6">
           <div class="flex items-start gap-4">
-            <img src="assets/location.png" class="w-5 mt-1">
+            <img src="/TNP/assets/location.png" class="w-5 mt-1">
             <p>
               NIT Sikkim, Ravangla<br>
               South Sikkim – 737139
@@ -56,12 +56,12 @@
           </div>
 
           <div class="flex items-center gap-4">
-            <img src="assets/phone.png" class="w-5">
+            <img src="/TNP/assets/phone.png" class="w-5">
             <p>+91-3595-230157</p>
           </div>
 
           <div class="flex items-center gap-4">
-            <img src="assets/email.png" class="w-5">
+            <img src="/TNP/assets/email.png" class="w-5">
             <p>tnp@nitsikkim.ac.in</p>
           </div>
         </div>
@@ -78,16 +78,16 @@
       <!-- SOCIAL ICONS -->
       <div class="flex items-center gap-6 mt-6 md:mt-0">
         <a href="#" class="w-12 h-12 rounded-full bg-[#0d2748] flex items-center justify-center hover:bg-blue-600 transition">
-          <img src="assets/fb.png" class="w-5">
+          <img src="/TNP/assets/fb.png" class="w-5">
         </a>
         <a href="#" class="w-12 h-12 rounded-full bg-[#0d2748] flex items-center justify-center hover:bg-sky-500 transition">
-          <img src="assets/twitter.png" class="w-5">
+          <img src="/TNP/assets/twitter.png" class="w-5">
         </a>
         <a href="#" class="w-12 h-12 rounded-full bg-[#0d2748] flex items-center justify-center hover:bg-blue-700 transition">
-          <img src="assets/linkedin.png" class="w-5">
+          <img src="/TNP/assets/linkedin.png" class="w-5">
         </a>
         <a href="#" class="w-12 h-12 rounded-full bg-[#0d2748] flex items-center justify-center hover:bg-pink-600 transition">
-          <img src="assets/insta.png" class="w-5">
+          <img src="/TNP/assets/insta.png" class="w-5">
         </a>
       </div>
     </div>

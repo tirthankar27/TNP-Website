@@ -4,7 +4,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>For Students</title>
+<title>Training & Placement Cell | NIT Sikkim</title>
 
 <script src="https://cdn.tailwindcss.com"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -24,7 +24,7 @@
 
 <body class="bg-gray-100 text-gray-900 overflow-x-hidden">
 
-<?php include 'frontend/header.php'; ?>
+<?php include 'header.php'; ?>
 
 <!-- HERO -->
 <section class="bg-gradient-to-r from-blue-600 to-blue-800 text-white py-20 md:py-32 text-center px-6">
@@ -377,7 +377,7 @@
 
 </section>
 
-<?php include 'frontend/footer.php'; ?>
+<?php include 'footer.php'; ?>
 
 <script>
 const ctx = document.getElementById("chart").getContext("2d");

@@ -5,7 +5,7 @@
     <!-- LEFT SECTION -->
     <div class="flex items-center gap-4 md:gap-6">
 
-      <img src="assets/logo.png" class="w-14 md:w-20">
+      <img src="/TNP/assets/logo.png" class="w-14 md:w-20">
 
       <div class="leading-tight">
         <p class="text-sm md:text-2xl font-semibold text-black">
