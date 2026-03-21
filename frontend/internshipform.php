@@ -100,7 +100,6 @@
             <i class="fas fa-file-signature text-blue-500 text-2xl"></i> 
             Company details form
           </h3>
-          <p class="text-slate-500 text-base mt-1 ml-1">Powered by Google Forms – secure & encrypted</p>
         </div>
         <!-- badge -->
         <div class="bg-blue-50 rounded-full py-2 px-5 text-sm text-blue-700 font-semibold flex items-center gap-2 border border-blue-200/60 shadow-sm">
