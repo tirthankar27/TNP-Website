@@ -133,7 +133,7 @@
           <span>Your responses are protected.</span>
           <span class="w-px h-5 bg-blue-200 hidden sm:block"></span>
           <i class="fas fa-address-card text-blue-500 ml-1"></i>
-          <span>Placement Cell • NIT Sikkim</span>
+          <span>Training and Placement Cell • NIT Sikkim</span>
         </div>
       </div>
     </div>
