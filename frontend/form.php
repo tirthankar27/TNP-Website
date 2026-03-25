@@ -109,18 +109,39 @@
       </div>
 
       <!-- iframe container with extra polish & better height for visibility -->
+      <!-- FORM TYPE SELECTOR -->
+      <div class="px-8 pt-6 flex justify-center">
+  <div class="relative bg-blue-100 p-1.5 rounded-full flex w-fit shadow-inner">
+
+    <!-- sliding background -->
+    <span id="toggleBg"
+      class="absolute top-1.5 left-1.5 h-[36px] w-[140px] bg-blue-600 rounded-full transition-all duration-300 ease-in-out">
+    </span>
+
+    <!-- Placement -->
+    <button onclick="loadForm('placement')" id="placementBtn"
+      class="relative z-10 w-[140px] h-[36px] text-sm font-semibold rounded-full text-white transition-all">
+      Placement
+    </button>
+
+    <!-- Internship -->
+    <button onclick="loadForm('internship')" id="internshipBtn"
+      class="relative z-10 w-[140px] h-[36px] text-sm font-semibold rounded-full text-blue-700 transition-all">
+      Internship
+    </button>
+
+  </div>
+</div>
+
+      <!-- iframe container -->
       <div class="p-5 md:p-7 bg-slate-50/50">
-        <div class="rounded-2xl border border-blue-200/70 bg-white shadow-inner overflow-hidden transition-shadow focus-within:shadow-blue-200/50">
+        <div class="rounded-2xl border border-blue-200/70 bg-white shadow-inner overflow-hidden">
           <iframe 
-            src="https://docs.google.com/forms/d/e/1FAIpQLSftEwtKBn8UtGfdED2f0ql3S1S5y8s3wXcS6Ny6qFUNGoHkLw/viewform?embedded=true"
+            id="formFrame"
             class="w-full"
             style="min-height: 1100px; background: white;"
             frameborder="0"
-            marginheight="0"
-            marginwidth="0"
-            title="placement registration form"
-            loading="lazy"
-            referrerpolicy="origin">
+            loading="lazy">
           </iframe>
         </div>
       </div>
@@ -140,5 +161,36 @@
 
 <!-- FOOTER (premium, matching header) -->
 <?php include '../footer.php'; ?>
+
+<script>
+  const placementForm = "https://docs.google.com/forms/d/e/1FAIpQLSfvfhxqLnb5qdhivBoCEDJi17N7vUItcKDin_KYt3tl4TjpEw/viewform?embedded=true";
+  const internshipForm = "https://docs.google.com/forms/d/e/1FAIpQLSftEwtKBn8UtGfdED2f0ql3S1S5y8s3wXcS6Ny6qFUNGoHkLw/viewform?embedded=true";
+
+  function loadForm(type) {
+    const frame = document.getElementById("formFrame");
+    const toggleBg = document.getElementById("toggleBg");
+    const placementBtn = document.getElementById("placementBtn");
+    const internshipBtn = document.getElementById("internshipBtn");
+
+    if (type === "placement") {
+      frame.src = placementForm;
+
+      toggleBg.style.transform = "translateX(0px)";
+      placementBtn.classList.add("text-white");
+      internshipBtn.classList.remove("text-white");
+      internshipBtn.classList.add("text-blue-700");
+
+    } else {
+      frame.src = internshipForm;
+
+      toggleBg.style.transform = "translateX(140px)";
+      internshipBtn.classList.add("text-white");
+      placementBtn.classList.remove("text-white");
+      placementBtn.classList.add("text-blue-700");
+    }
+  }
+
+  window.onload = () => loadForm('placement');
+</script>
 </body>
 </html>
