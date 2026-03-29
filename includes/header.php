@@ -1,0 +1,100 @@
+<?php
+$currentPage = basename($_SERVER['PHP_SELF']);
+
+function active($page, $isHome = false) {
+  global $currentPage;
+
+  if ($isHome) {
+    return $currentPage == 'index.php'
+      ? 'bg-[#0f172a] text-white px-6 py-2 rounded-full'
+      : 'hover:text-black';
+  }
+
+  return $currentPage == $page
+    ? 'text-black font-semibold'
+    : 'hover:text-black';
+}
+?>
+
+<header class="sticky top-0 z-50 bg-[#f3f3f3]">
+
+  <div class="w-full flex items-center justify-between px-6 md:px-16 py-4 md:py-6">
+
+    <!-- LEFT -->
+    <div class="flex items-center gap-4 md:gap-6">
+      <a href="/TNP/index.php">
+        <img src="/TNP/assets/logo.png" class="w-14 md:w-20 cursor-pointer">
+      </a>
+
+      <div class="leading-tight">
+        <p class="text-sm md:text-2xl font-semibold text-black">
+          राष्ट्रीय प्रौद्योगिकी संस्थान, सिक्किम
+        </p>
+        <p class="text-xs md:text-xl font-medium text-black tracking-wide">
+          NATIONAL INSTITUTE OF TECHNOLOGY SIKKIM
+        </p>
+      </div>
+    </div>
+
+    <!-- DESKTOP NAV -->
+    <nav class="hidden lg:flex items-center gap-12 text-lg font-medium text-gray-700">
+
+      <a href="/TNP/index.php" class="<?= active('index.php', true) ?>">
+        Home
+      </a>
+
+      <a href="/TNP/pages/about.php" class="<?= active('about.php') ?>">
+        About Us
+      </a>
+
+      <a href="/TNP/pages/students.php" class="<?= active('students.php') ?>">
+        For Students
+      </a>
+
+      <a href="/TNP/pages/recruiters.php" class="<?= active('recruiters.php') ?>">
+        For Recruiters
+      </a>
+
+      <a href="/TNP/pages/academics.php" class="<?= active('academics.php') ?>">
+        Academics
+      </a>
+
+      <a href="/TNP/pages/why-nit.php" class="<?= active('why-nit.php') ?>">
+        Why NIT Sikkim?
+      </a>
+
+      <a href="/TNP/pages/contact.php" class="<?= active('contact.php') ?>">
+        Contact Us
+      </a>
+
+    </nav>
+
+    <!-- HAMBURGER -->
+    <button id="menuBtn" class="lg:hidden text-3xl text-black">
+      ☰
+    </button>
+
+  </div>
+
+  <!-- MOBILE MENU -->
+  <div id="mobileMenu" class="hidden lg:hidden px-6 pb-6">
+
+    <div class="flex flex-col gap-4 text-lg font-medium text-gray-700">
+
+      <a href="/TNP/index.php"
+         class="<?= $currentPage == 'index.php' ? 'bg-[#0f172a] text-white px-6 py-2 rounded-full w-fit' : '' ?>">
+        Home
+      </a>
+
+      <a href="/TNP/pages/about.php">About Us</a>
+      <a href="/TNP/pages/students.php">For Students</a>
+      <a href="/TNP/pages/recruiters.php">For Recruiters</a>
+      <a href="/TNP/pages/academics.php">Academics</a>
+      <a href="/TNP/pages/why-nit.php">Why NIT Sikkim?</a>
+      <a href="/TNP/pages/contact.php">Contact Us</a>
+
+    </div>
+
+  </div>
+
+</header>

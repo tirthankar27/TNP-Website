@@ -24,7 +24,7 @@
 
 <body class="bg-gray-100 text-gray-900 overflow-x-hidden">
 
-<?php include 'header.php'; ?>
+<?php include 'includes/header.php'; ?>
 
 <!-- HERO -->
 <section class="bg-gradient-to-r from-blue-600 to-blue-800 text-white py-20 md:py-32 text-center px-6">
@@ -377,7 +377,7 @@
 
 </section>
 
-<?php include 'footer.php'; ?>
+<?php include 'includes/footer.php'; ?>
 
 <script>
 const ctx = document.getElementById("chart").getContext("2d");
