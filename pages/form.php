@@ -27,7 +27,7 @@
 </head>
 <body class="bg-slate-50 text-slate-800 font-sans antialiased">
 
-<?php include '../header.php'; ?>
+<?php include '../includes/header.php'; ?>
 
 <!-- HERO SECTION – elevated & spacious -->
 <section class="relative bg-gradient-to-r from-blue-700 via-blue-800 to-indigo-900 text-white overflow-hidden">
@@ -157,8 +157,8 @@
       </div>
 </section>
 
-<!-- FOOTER (premium, matching header) -->
-<?php include '../footer.php'; ?>
+<!-- FOOTER -->
+<?php include '../includes/footer.php'; ?>
 
 <script>
   function loadForm(type) {
