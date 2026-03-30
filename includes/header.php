@@ -7,12 +7,12 @@ function active($page, $isHome = false) {
   if ($isHome) {
     return $currentPage == 'index.php'
       ? 'bg-[#0f172a] text-white px-6 py-2 rounded-full'
-      : 'hover:text-black';
+      : 'text-gray-700 hover:text-black transition-colors duration-200';
   }
 
   return $currentPage == $page
-    ? 'text-black font-semibold'
-    : 'hover:text-black';
+    ? 'bg-[#0f172a] text-white px-6 py-2 rounded-full'
+    : 'text-gray-700 hover:text-black transition-colors duration-200';
 }
 ?>
 
@@ -37,8 +37,7 @@ function active($page, $isHome = false) {
     </div>
 
     <!-- DESKTOP NAV -->
-    <nav class="hidden lg:flex items-center gap-12 text-lg font-medium text-gray-700">
-
+    <nav class="hidden lg:flex items-center gap-6 text-lg font-medium">
       <a href="/TNP/index.php" class="<?= active('index.php', true) ?>">
         Home
       </a>
@@ -66,7 +65,6 @@ function active($page, $isHome = false) {
       <a href="/TNP/pages/contact.php" class="<?= active('contact.php') ?>">
         Contact Us
       </a>
-
     </nav>
 
     <!-- HAMBURGER -->
@@ -79,22 +77,53 @@ function active($page, $isHome = false) {
   <!-- MOBILE MENU -->
   <div id="mobileMenu" class="hidden lg:hidden px-6 pb-6">
 
-    <div class="flex flex-col gap-4 text-lg font-medium text-gray-700">
-
+    <div class="flex flex-col gap-4 text-lg font-medium">
       <a href="/TNP/index.php"
-         class="<?= $currentPage == 'index.php' ? 'bg-[#0f172a] text-white px-6 py-2 rounded-full w-fit' : '' ?>">
+         class="<?= $currentPage == 'index.php' ? 'bg-[#0f172a] text-white px-6 py-2 rounded-full w-fit' : 'text-gray-700 hover:text-black transition-colors duration-200' ?>">
         Home
       </a>
 
-      <a href="/TNP/pages/about.php">About Us</a>
-      <a href="/TNP/pages/students.php">For Students</a>
-      <a href="/TNP/pages/recruiters.php">For Recruiters</a>
-      <a href="/TNP/pages/academics.php">Academics</a>
-      <a href="/TNP/pages/why-nit.php">Why NIT Sikkim?</a>
-      <a href="/TNP/pages/contact.php">Contact Us</a>
+      <a href="/TNP/pages/about.php"
+         class="<?= $currentPage == 'about.php' ? 'bg-[#0f172a] text-white px-6 py-2 rounded-full w-fit' : 'text-gray-700 hover:text-black transition-colors duration-200' ?>">
+        About Us
+      </a>
 
+      <a href="/TNP/pages/students.php"
+         class="<?= $currentPage == 'students.php' ? 'bg-[#0f172a] text-white px-6 py-2 rounded-full w-fit' : 'text-gray-700 hover:text-black transition-colors duration-200' ?>">
+        For Students
+      </a>
+
+      <a href="/TNP/pages/recruiters.php"
+         class="<?= $currentPage == 'recruiters.php' ? 'bg-[#0f172a] text-white px-6 py-2 rounded-full w-fit' : 'text-gray-700 hover:text-black transition-colors duration-200' ?>">
+        For Recruiters
+      </a>
+
+      <a href="/TNP/pages/academics.php"
+         class="<?= $currentPage == 'academics.php' ? 'bg-[#0f172a] text-white px-6 py-2 rounded-full w-fit' : 'text-gray-700 hover:text-black transition-colors duration-200' ?>">
+        Academics
+      </a>
+
+      <a href="/TNP/pages/why-nit.php"
+         class="<?= $currentPage == 'why-nit.php' ? 'bg-[#0f172a] text-white px-6 py-2 rounded-full w-fit' : 'text-gray-700 hover:text-black transition-colors duration-200' ?>">
+        Why NIT Sikkim?
+      </a>
+
+      <a href="/TNP/pages/contact.php"
+         class="<?= $currentPage == 'contact.php' ? 'bg-[#0f172a] text-white px-6 py-2 rounded-full w-fit' : 'text-gray-700 hover:text-black transition-colors duration-200' ?>">
+        Contact Us
+      </a>
     </div>
 
   </div>
 
 </header>
+
+<script>
+  // Mobile menu toggle functionality
+  const menuBtn = document.getElementById('menuBtn');
+  const mobileMenu = document.getElementById('mobileMenu');
+
+  menuBtn.addEventListener('click', () => {
+    mobileMenu.classList.toggle('hidden');
+  });
+</script>
