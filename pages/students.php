@@ -46,7 +46,7 @@
 
   <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
     <div class="bg-blue-100 p-10 rounded-3xl shadow-md text-left">
-      <img src="assets/book.png" class="w-14 mb-6">
+      <img src="../assets/book.png" class="w-14 mb-6">
       <h3 class="text-xl font-semibold mb-4">Training Programs</h3>
       <p class="text-gray-600 text-sm">
         Regular workshops on aptitude, coding, communication skills, and personality development
@@ -54,7 +54,7 @@
     </div>
 
     <div class="bg-purple-100 p-10 rounded-3xl shadow-md text-left">
-      <img src="assets/people.png" class="w-14 mb-6">
+      <img src="../assets/people.png" class="w-14 mb-6">
       <h3 class="text-xl font-semibold mb-4">Mock Interviews</h3>
       <p class="text-gray-600 text-sm">
         Practice sessions with industry experts to prepare for actual recruitment drives
@@ -62,7 +62,7 @@
     </div>
 
     <div class="bg-green-100 p-10 rounded-3xl shadow-md text-left">
-      <img src="assets/badge.png" class="w-14 mb-6">
+      <img src="../assets/badge.png" class="w-14 mb-6">
       <h3 class="text-xl font-semibold mb-4">Skill Development</h3>
       <p class="text-gray-600 text-sm">
         Technical and soft skills enhancement programs to make you industry-ready
@@ -70,7 +70,7 @@
     </div>
 
     <div class="bg-orange-100 p-10 rounded-3xl shadow-md text-left">
-      <img src="assets/guide.png" class="w-14 mb-6">
+      <img src="../assets/guide.png" class="w-14 mb-6">
       <h3 class="text-xl font-semibold mb-4">Career Guidance</h3>
       <p class="text-gray-600 text-sm">
         One-on-one counseling and guidance for career planning and decision making
@@ -90,32 +90,32 @@
 
     <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
         <div class="bg-gray-700/40 p-6 rounded-xl flex items-start gap-3">
-            <img src="assets/tick.png" class="w-6 mt-1">
+            <img src="../assets/tick.png" class="w-6 mt-1">
             <p>Maintain minimum CGPA as specified by recruiting companies (usually 6.5–7.0)</p>
         </div>
 
         <div class="bg-gray-700/40 p-6 rounded-xl flex items-start gap-3">
-            <img src="assets/tick.png" class="w-6 mt-1">
+            <img src="../assets/tick.png" class="w-6 mt-1">
             <p>No active backlogs at the time of placement drive</p>
         </div>
 
         <div class="bg-gray-700/40 p-6 rounded-xl flex items-start gap-3">
-            <img src="assets/tick.png" class="w-6 mt-1">
+            <img src="../assets/tick.png" class="w-6 mt-1">
             <p>Regular attendance in training programs and pre-placement talks</p>
         </div>
 
         <div class="bg-gray-700/40 p-6 rounded-xl flex items-start gap-3">
-            <img src="assets/tick.png" class="w-6 mt-1">
+            <img src="../assets/tick.png" class="w-6 mt-1">
             <p>Professional conduct during the entire recruitment process</p>
         </div>
 
         <div class="bg-gray-700/40 p-6 rounded-xl flex items-start gap-3">
-            <img src="assets/tick.png" class="w-6 mt-1">
+            <img src="../assets/tick.png" class="w-6 mt-1">
             <p>Adherence to placement cell rules and company-specific guidelines</p>
         </div>
 
         <div class="bg-gray-700/40 p-6 rounded-xl flex items-start gap-3">
-            <img src="assets/tick.png" class="w-6 mt-1">
+            <img src="../assets/tick.png" class="w-6 mt-1">
             <p>One student, one offer policy (as per institute norms)</p>
         </div>
     </div>
