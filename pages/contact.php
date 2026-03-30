@@ -11,4 +11,7 @@
 </body>
 </html>
 <?php include('../includes/header.php'); ?>
+
+// Content for Why NIT Sikkim page goes here
+
 <?php include('../includes/footer.php'); ?>
