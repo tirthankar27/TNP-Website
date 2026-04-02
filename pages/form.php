@@ -1,195 +1,287 @@
+<?php
+include '../includes/db.php';
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+
+  $type = $_POST['type'];
+
+  $company_name = $_POST['company_name'];
+  $mca_registration_date = $_POST['mca_registration_date'];
+  $allowed_branches = json_encode($_POST['allowed_branches'] ?? []);
+  $job_role = $_POST['job_role'];
+  $selection_rounds = $_POST['selection_rounds'];
+
+  $hr_name = $_POST['hr_name'];
+  $hr_email = $_POST['hr_email'];
+  $hr_phone = $_POST['hr_phone'];
+
+  if ($type == "placement") {
+    if (
+        empty($company_name) || empty($mca_registration_date) || empty($job_role) ||
+        empty($selection_rounds) || empty($hr_name) || empty($hr_email) ||
+        empty($hr_phone) || empty($_POST['ctc'])
+    ) {
+        die("All placement fields are required");
+    }
+
+  } else {
+      if (
+          empty($company_name) || empty($mca_registration_date) || empty($job_role) ||
+          empty($selection_rounds) || empty($hr_name) || empty($hr_email) ||
+          empty($hr_phone) || empty($_POST['duration_months']) || empty($_POST['stipend'])
+      ) {
+          die("All internship fields except PPO are required");
+      }
+  }
+
+  mysqli_query($conn, $sql);
+  echo "<script>alert('Form submitted successfully');</script>";
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>NIT Sikkim | Placement & Internship</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-  <style>
-    .noise-bg {
-      background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMDAiIGhlaWdodD0iMzAwIj48ZmlsdGVyIGlkPSJmIj48ZmVUdXJidWxlbmNlIHR5cGU9ImZyYWN0YWxOb2lzZSIgYmFzZUZyZXF1ZW5jeT0iLjc0IiBudW1PY3RhdmVzPSIzIiAvPjwvZmlsdGVyPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbHRlcj0idXJsKCNmKSIgb3BhY2l0eT0iMC4wNCIgLz48L3N2Zz4=');
-    }
-    .glass-deep {
-      backdrop-filter: blur(12px);
-      background: rgba(255, 255, 255, 0.85);
-    }
-    .premium-shadow {
-      box-shadow: 0 25px 50px -12px rgba(0, 20, 60, 0.25), 0 8px 20px -8px rgba(0, 45, 85, 0.2);
-    }
-    .input-premium {
-      transition: all 0.18s ease;
-    }
-    .input-premium:focus {
-      box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.15), 0 4px 8px -2px rgba(0,20,40,0.1);
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NIT Sikkim | Placement & Internship</title>
+
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+<style>
+.noise-bg {
+  background-image: url('data:image/svg+xml;base64,...');
+}
+.glass-deep {
+  backdrop-filter: blur(12px);
+  background: rgba(255, 255, 255, 0.9);
+}
+.premium-shadow {
+  box-shadow: 0 25px 50px -12px rgba(0, 20, 60, 0.25);
+}
+.input-premium:focus {
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2);
+}
+</style>
 </head>
-<body class="bg-slate-50 text-slate-800 font-sans antialiased">
+
+<body class="bg-slate-50 text-slate-800">
 
 <?php include '../includes/header.php'; ?>
 
-<!-- HERO SECTION – elevated & spacious -->
-<section class="relative bg-gradient-to-r from-blue-700 via-blue-800 to-indigo-900 text-white overflow-hidden">
-  <div class="absolute inset-0 opacity-10">
-    <svg width="100%" height="100%" viewBox="0 0 800 600" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M0 200 L200 0 L600 100 L800 300 L600 500 L300 600 L0 400 Z" fill="white" fill-opacity="0.15" />
-      <circle cx="700" cy="120" r="80" fill="white" fill-opacity="0.1" />
-    </svg>
-  </div>
-  <div class="max-w-5xl mx-auto px-6 py-28 md:py-36 text-center relative">
-    <h1 class="text-5xl md:text-7xl font-extrabold tracking-tight drop-xl">
-      <span class="block">Placement & Internship</span>
-      <span class="block text-4xl md:text-5xl font-light mt-3 text-blue-100">NIT Sikkim – Career Gateway</span>
-    </h1>
-    <p class="text-lg md:text-2xl text-blue-100 max-w-3xl mx-auto mt-8 leading-relaxed">
-      For recruiters & partners: complete the company details form. <br class="hidden md:block">Verified entries are processed within 48 hours.
-    </p>
-    <div class="flex flex-wrap gap-4 justify-center mt-10">
-      <div class="bg-white/10 backdrop-blur-sm px-6 py-3 rounded-2xl border border-white/20 flex items-center gap-3">
-        <i class="fas fa-check-circle text-blue-200 text-xl"></i>
-        <span class="text-white font-medium">150+ recruiters</span>
-      </div>
-      <div class="bg-white/10 backdrop-blur-sm px-6 py-3 rounded-2xl border border-white/20 flex items-center gap-3">
-        <i class="fas fa-clock text-blue-200 text-xl"></i>
-        <span class="text-white font-medium">fast-track 24h response</span>
-      </div>
-    </div>
-  </div>
-  <div class="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-slate-50 to-transparent"></div>
+<!-- HERO -->
+<section class="bg-gradient-to-r from-blue-700 to-indigo-900 text-white py-24 text-center">
+  <h1 class="text-5xl font-bold">Placement & Internship</h1>
+  <p class="mt-4 text-lg">Submit company details easily</p>
 </section>
 
-<!-- MAIN SECTION with cards -->
-<section class="relative -mt-20 px-4 md:px-8 pb-24 z-10">
-  <div class="max-w-7xl mx-auto space-y-8">
-    <div class="glass-deep noise-bg rounded-[2.5rem] premium-shadow p-8 md:p-10 border border-white/60 transition-all hover:border-blue-200/80 group">
-      <div class="flex flex-col md:flex-row md:items-center gap-6">
-        <div class="flex-1">
-          <div class="flex items-center gap-3 mb-3">
-            <span class="bg-blue-600 w-1.5 h-8 rounded-full"></span>
-            <h2 class="text-2xl md:text-3xl font-bold text-blue-900 tracking-tight">📋 Quick guidelines</h2>
-          </div>
-          <p class="text-slate-600 max-w-2xl text-base md:text-lg mb-4">To ensure seamless registration, please follow these points — they help us verify and connect faster.</p>
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-3 text-slate-700">
-            <div class="flex items-start gap-2"><i class="fas fa-circle-check text-blue-500 text-sm mt-1"></i><span>Fill all mandatory fields accurately</span></div>
-            <div class="flex items-start gap-2"><i class="fas fa-circle-check text-blue-500 text-sm mt-1"></i><span>Use official email ID for communication</span></div>
-            <div class="flex items-start gap-2"><i class="fas fa-circle-check text-blue-500 text-sm mt-1"></i><span>Ensure company details are correct before submission</span></div>
-            <div class="flex items-start gap-2"><i class="fas fa-circle-check text-blue-500 text-sm mt-1"></i><span>The Placement Cell will verify submitted information</span></div>
-          </div>
-        </div>
-        <!-- decorative quick stat -->
-        <div class="bg-blue-50/80 rounded-2xl p-6 text-center md:w-64 border border-blue-100/70">
-          <span class="text-3xl font-black text-blue-800">100%</span>
-          <span class="block text-sm font-medium text-blue-600 mt-1">verification accuracy</span>
-          <div class="flex justify-center gap-3 mt-3 text-blue-700">
-            <i class="fas fa-shield-alt text-xl"></i>
-            <i class="fas fa-building text-xl"></i>
-          </div>
-        </div>
+<!-- MAIN -->
+<section class="-mt-16 px-4 pb-20">
+<div class="max-w-6xl mx-auto space-y-8">
+
+<!-- ✅ GUIDELINES CARD -->
+<div class="glass-deep noise-bg rounded-3xl premium-shadow p-8 border">
+  <div class="flex flex-col md:flex-row gap-6">
+
+    <div class="flex-1">
+      <h2 class="text-2xl font-bold text-blue-900 mb-4">📋 Quick Guidelines</h2>
+
+      <div class="grid md:grid-cols-2 gap-3 text-slate-700">
+        <div class="flex gap-2"><i class="fas fa-check text-blue-500 mt-1"></i>Fill all mandatory fields</div>
+        <div class="flex gap-2"><i class="fas fa-check text-blue-500 mt-1"></i>Use official email ID</div>
+        <div class="flex gap-2"><i class="fas fa-check text-blue-500 mt-1"></i>Ensure company details are correct</div>
+        <div class="flex gap-2"><i class="fas fa-check text-blue-500 mt-1"></i>Data will be verified by placement cell</div>
       </div>
     </div>
 
-    <!-- main form card - elevated with iframe and nice touches -->
-    <div class="bg-white/90 backdrop-blur-sm rounded-[2.5rem] premium-shadow border border-blue-100/70 overflow-hidden transition-all hover:border-blue-200">
+    <div class="bg-blue-50 rounded-2xl p-6 text-center border">
+      <span class="text-3xl font-bold text-blue-800">100%</span>
+      <p class="text-sm text-blue-600">verification accuracy</p>
+    </div>
 
-      <!-- top bar with subtle wave & step indicator -->
-      <div class="h-2.5 bg-gradient-to-r from-blue-600 via-blue-500 to-indigo-500"></div>
-      <div class="px-8 pt-8 pb-4 flex flex-wrap items-center justify-between gap-4 border-b border-blue-100/50">
-        <div>
-          <h3 class="text-3xl font-bold text-blue-800 flex items-center gap-3">
-            <i class="fas fa-file-signature text-blue-500 text-2xl"></i> 
-            Company details form
-          </h3>
-        </div>
-        <!-- badge -->
-        <div class="bg-blue-50 rounded-full py-2 px-5 text-sm text-blue-700 font-semibold flex items-center gap-2 border border-blue-200/60 shadow-sm">
-          <span class="h-2 w-2 rounded-full bg-green-500 animate-pulse"></span> 
-          <i class="far fa-clock"></i> 4-6 min to complete
-        </div>
-      </div>
+  </div>
+</div>
 
-      <!-- iframe container with extra polish & better height for visibility -->
-      <!-- FORM TYPE SELECTOR -->
-      <div class="px-8 pt-6 flex justify-center">
-        <div class="relative bg-blue-100 p-1.5 rounded-full flex w-fit shadow-inner">
+<!-- FORM CARD -->
+<div class="bg-white rounded-3xl premium-shadow p-8">
 
-          <!-- sliding background -->
-          <span id="toggleBg"
-            class="absolute top-1.5 left-1.5 h-[36px] w-[140px] bg-blue-600 rounded-full transition-all duration-300 ease-in-out">
-          </span>
+<!-- TOGGLE -->
+<div class="flex justify-center mb-8">
+  <div class="relative bg-blue-100 p-1.5 rounded-full flex">
 
-          <!-- Placement -->
-          <button onclick="loadForm('placement')" id="placementBtn"
-            class="relative z-10 w-[140px] h-[36px] text-sm font-semibold rounded-full text-white transition-all">
-            Placement
-          </button>
+    <span id="toggleBg"
+      class="absolute top-1.5 left-1.5 h-[36px] w-[140px] bg-blue-600 rounded-full transition-all duration-300">
+    </span>
 
-          <!-- Internship -->
-          <button onclick="loadForm('internship')" id="internshipBtn"
-            class="relative z-10 w-[140px] h-[36px] text-sm font-semibold rounded-full text-blue-700 transition-all">
-            Internship
-          </button>
+    <button onclick="loadForm('placement')" id="placementBtn"
+      class="relative z-10 w-[140px] h-[36px] text-sm font-semibold text-white">
+      Placement
+    </button>
 
-        </div>
-      </div>
+    <button onclick="loadForm('internship')" id="internshipBtn"
+      class="relative z-10 w-[140px] h-[36px] text-sm font-semibold text-blue-700">
+      Internship
+    </button>
 
-      <!-- iframe container -->
-      <div class="p-5 md:p-7 bg-slate-50/50">
-        <div class="rounded-2xl border border-blue-200/70 bg-white shadow-inner overflow-hidden">
+  </div>
+</div>
 
-          <!-- Placement Form -->
-          <iframe 
-            id="placementFrame"
-            src="https://docs.google.com/forms/d/e/1FAIpQLSfvfhxqLnb5qdhivBoCEDJi17N7vUItcKDin_KYt3tl4TjpEw/viewform?embedded=true"
-            class="w-full"
-            style="min-height:1100px;">
-          </iframe>
+<!-- FORM -->
+<form method="POST" class="grid md:grid-cols-2 gap-6">
 
-          <!-- Internship Form -->
-          <iframe 
-            id="internshipFrame"
-            src="https://docs.google.com/forms/d/e/1FAIpQLSftEwtKBn8UtGfdED2f0ql3S1S5y8s3wXcS6Ny6qFUNGoHkLw/viewform?embedded=true"
-            class="w-full hidden"
-            style="min-height:1100px;">
-          </iframe>
+<input type="hidden" name="type" id="formType" value="placement">
 
-        </div>
-      </div>
+<!-- COMMON -->
+<input id="company_name" name="company_name" required placeholder="Company Name" class="p-3 border rounded-xl input-premium">
+
+<input id="mca_date" type="date" name="mca_registration_date" class="p-3 border rounded-xl input-premium">
+
+<input id="job_role" name="job_role" placeholder="Job Role" class="p-3 border rounded-xl input-premium">
+
+<div class="md:col-span-2">
+  <label class="block mb-2 font-semibold text-slate-700">Allowed Branches</label>
+
+  <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 bg-white p-4 rounded-xl border">
+
+    <label class="flex items-center gap-2 cursor-pointer">
+      <input type="checkbox" name="allowed_branches[]" value="CE" class="accent-blue-600">
+      Civil Engineering
+    </label>
+
+    <label class="flex items-center gap-2 cursor-pointer">
+      <input type="checkbox" name="allowed_branches[]" value="CSE" class="accent-blue-600">
+      Computer Science and Engineering
+    </label>
+
+    <label class="flex items-center gap-2 cursor-pointer">
+      <input type="checkbox" name="allowed_branches[]" value="ECE" class="accent-blue-600">
+      Electronics and Communication Engineering
+    </label>
+
+    <label class="flex items-center gap-2 cursor-pointer">
+      <input type="checkbox" name="allowed_branches[]" value="EEE" class="accent-blue-600">
+      Electrical and Electronics Engineering
+    </label>
+
+    <label class="flex items-center gap-2 cursor-pointer">
+      <input type="checkbox" name="allowed_branches[]" value="ME" class="accent-blue-600">
+      Mechanical Engineering
+    </label>
+
+  </div>
+</div>
+
+<textarea id="rounds" name="selection_rounds" placeholder="Selection Rounds" class="md:col-span-2 p-3 border rounded-xl input-premium"></textarea>
+
+<!-- PLACEMENT -->
+<div id="placementFields" class="contents">
+  <input id="ctc" name="ctc" placeholder="CTC (LPA)" class="p-3 border rounded-xl input-premium">
+</div>
+
+<!-- INTERNSHIP -->
+<div id="internshipFields" class="hidden contents">
+  <input id="duration" name="duration_months" placeholder="Duration (days)" class="p-3 border rounded-xl input-premium">
+  <input id="stipend" name="stipend" placeholder="Stipend" class="p-3 border rounded-xl input-premium">
+  <input id="ppo" name="ppo_ctc" placeholder="PPO CTC" class="p-3 border rounded-xl input-premium">
+</div>
+
+<input id="hr_name" name="hr_name" placeholder="HR Name" class="p-3 border rounded-xl input-premium">
+<input id="hr_email" name="hr_email" placeholder="HR Email" class="p-3 border rounded-xl input-premium">
+<input id="hr_phone" name="hr_phone" placeholder="HR Phone" class="p-3 border rounded-xl input-premium">
+
+<div class="md:col-span-2 text-center">
+  <button class="bg-blue-600 text-white px-8 py-3 rounded-xl hover:bg-blue-700 transition">
+    Submit
+  </button>
+</div>
+
+</form>
+
+</div>
+</div>
 </section>
 
-<!-- FOOTER -->
 <?php include '../includes/footer.php'; ?>
 
 <script>
-  function loadForm(type) {
-    const placement = document.getElementById("placementFrame");
-    const internship = document.getElementById("internshipFrame");
+function setRequiredPlacement() {
+  document.getElementById("ctc").required = true;
 
-    const toggleBg = document.getElementById("toggleBg");
-    const placementBtn = document.getElementById("placementBtn");
-    const internshipBtn = document.getElementById("internshipBtn");
+  document.getElementById("duration").required = false;
+  document.getElementById("stipend").required = false;
+  document.getElementById("ppo").required = false;
 
-    if (type === "placement") {
-      placement.classList.remove("hidden");
-      internship.classList.add("hidden");
+  setCommonRequired(true);
+}
 
-      toggleBg.style.transform = "translateX(0px)";
-      placementBtn.classList.add("text-white");
-      internshipBtn.classList.remove("text-white");
-      internshipBtn.classList.add("text-blue-700");
+function setRequiredInternship() {
+  document.getElementById("ctc").required = false;
 
-    } else {
-      internship.classList.remove("hidden");
-      placement.classList.add("hidden");
+  document.getElementById("duration").required = true;
+  document.getElementById("stipend").required = true;
+  document.getElementById("ppo").required = false; // optional
 
-      toggleBg.style.transform = "translateX(140px)";
-      internshipBtn.classList.add("text-white");
-      placementBtn.classList.remove("text-white");
-      placementBtn.classList.add("text-blue-700");
-    }
+  setCommonRequired(true);
+}
+
+function setCommonRequired(flag) {
+  document.getElementById("company_name").required = flag;
+  document.getElementById("mca_date").required = flag;
+  document.getElementById("job_role").required = flag;
+  document.getElementById("branches").required = flag;
+  document.getElementById("rounds").required = flag;
+  document.getElementById("hr_name").required = flag;
+  document.getElementById("hr_email").required = flag;
+  document.getElementById("hr_phone").required = flag;
+}
+
+function loadForm(type) {
+  const placementFields = document.getElementById("placementFields");
+  const internshipFields = document.getElementById("internshipFields");
+
+  const toggleBg = document.getElementById("toggleBg");
+  const placementBtn = document.getElementById("placementBtn");
+  const internshipBtn = document.getElementById("internshipBtn");
+
+  document.getElementById("formType").value = type;
+
+  if (type === "placement") {
+    placementFields.classList.remove("hidden");
+    internshipFields.classList.add("hidden");
+
+    toggleBg.style.transform = "translateX(0px)";
+    placementBtn.classList.add("text-white");
+    internshipBtn.classList.remove("text-white");
+
+    setRequiredPlacement();
+
+  } else {
+    internshipFields.classList.remove("hidden");
+    placementFields.classList.add("hidden");
+
+    toggleBg.style.transform = "translateX(140px)";
+    internshipBtn.classList.add("text-white");
+    placementBtn.classList.remove("text-white");
+
+    setRequiredInternship();
   }
+}
 
-  window.onload = () => loadForm('placement');
+function validateBranches() {
+  const checkboxes = document.querySelectorAll('input[name="allowed_branches[]"]');
+  return Array.from(checkboxes).some(cb => cb.checked);
+}
+
+document.querySelector("form").addEventListener("submit", function(e) {
+  if (!validateBranches()) {
+    alert("Please select at least one branch");
+    e.preventDefault();
+  }
+});
+
+window.onload = () => loadForm('placement');
 </script>
+
 </body>
 </html>
