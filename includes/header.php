@@ -22,7 +22,7 @@ function active($page, $isHome = false) {
 
     <!-- LEFT -->
     <div class="flex items-center gap-4 md:gap-6">
-      <a href="/TNP/index.php">
+      <a href="/TNP">
         <img src="/TNP/assets/logo.png" class="w-14 md:w-20 cursor-pointer">
       </a>
 
@@ -38,7 +38,7 @@ function active($page, $isHome = false) {
 
     <!-- DESKTOP NAV -->
     <nav class="hidden lg:flex items-center gap-6 text-lg font-medium">
-      <a href="/TNP/index.php" class="<?= active('index.php', true) ?>">
+      <a href="/TNP" class="<?= active('index.php', true) ?>">
         Home
       </a>
 
@@ -78,7 +78,7 @@ function active($page, $isHome = false) {
   <div id="mobileMenu" class="hidden lg:hidden px-6 pb-6">
 
     <div class="flex flex-col gap-4 text-lg font-medium">
-      <a href="/TNP/index.php"
+      <a href="/TNP"
          class="<?= $currentPage == 'index.php' ? 'bg-[#0f172a] text-white px-6 py-2 rounded-full w-fit' : 'text-gray-700 hover:text-black transition-colors duration-200' ?>">
         Home
       </a>
